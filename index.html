@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GESTÃO DE PRODUÇÃO</title>
+
+<style>
+
+/* ✨ Fundo preto animado minimalista */
+body {
+  animation: fadeIn 1s ease forwards;
+
+  background: #000;
+  background-image:
+      radial-gradient(rgba(255,0,0,0.07) 0%, transparent 70%),
+      radial-gradient(rgba(255,0,0,0.04) 0%, transparent 80%);
+  background-size: 300px 300px, 500px 500px;
+  background-position: 0 0, 0 0;
+  animation: fadeIn 1s ease forwards, bgMove 12s ease-in-out infinite alternate;
+
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* 🌫 Movimento suave do fundo */
+@keyframes bgMove {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: -40px -40px, 40px 40px; }
+}
+
+/* ✨ Fade in geral */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 🌌 Header animado */
+header {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #1b1b1b, #141414);
+  border-bottom: 2px solid #333;
+  box-shadow: 0 0 18px rgba(255, 0, 0, 0.12);
+  animation: headerGlow 6s ease-in-out infinite alternate;
+}
+
+header h1 {
+  margin-bottom: 5px;
+  text-shadow: 0 0 8px rgba(255, 80, 80, 0.25);
+}
+
+/* ✨ Glow alternando no header */
+@keyframes headerGlow {
+  0% { box-shadow: 0 0 10px rgba(255,0,0,0.08); }
+  100% { box-shadow: 0 0 22px rgba(255,0,0,0.18); }
+}
+
+.container {
+  width: 95%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+/* 🔍 Barra de pesquisa */
+#searchBox {
+  width: 40%;
+  padding: 10px;
+  display: block;
+  margin: 0 auto 25px auto;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  transition: 0.25s ease;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+/* ✨ Glow ao focar */
+#searchBox:focus {
+  outline: none;
+  border-color: #ff4444;
+  box-shadow: 0 0 10px rgba(255, 70, 70, 0.5);
+}
+
+/* 📋 Tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.08);
+  animation: tableFade 0.8s ease forwards;
+}
+
+/* 🪩 Tabela fade-in */
+@keyframes tableFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+th {
+  background: linear-gradient(135deg, #ff4444, #cc0000);
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+  padding: 12px;
+  border: 1px solid #333;
+}
+
+td {
+  padding: 12px;
+  border: 1px solid #333;
+  text-align: center;
+}
+
+/* Linhas alternadas */
+tr:nth-child(even) {
+  background-color: #181818;
+}
+
+/* 🖥 Hover animado */
+tr {
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+tr:hover {
+  background-color: #242424;
+  transform: scale(1.01);
+}
+
+/* 🎨 Status (cores com glow suave) */
+.status-entregue {
+  color: #00ff66;
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(0, 255, 102, 0.25);
+}
+
+.status-pendente {
+  color: #ffcc00;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 204, 0, 0.25);
+}
+
+.status-atrasado {
+  color: #ff3333;
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(255, 51, 51, 0.25);
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>TABELA GESTÃO DE FARM</h1>
+  <p><i>Sistema de Controle Interno - Cachoeirinha</i></p>
+</header>
+
+<div class="container">
+
+  <!-- 🔍 Barra de pesquisa -->
+  <input type="text" id="searchBox" placeholder="Pesquisar por nome, passaporte ou status...">
+
+  <table id="dataTable">
+    <tr>
+      <th>Nome</th>
+      <th>Passaporte</th>
+      <th>Status</th>
+      <th>Data da Entrega</th>
+      <th>Observação</th>
+    </tr>
+
+    <!-- Exemplos -->
+    <tr>
+      <td>João Silva</td>
+      <td>10293</td>
+      <td class="status-entregue">ENTREGUE</td>
+      <td>2025-01-12</td>
+      <td>Entrega completa</td>
+    </tr>
+
+    <tr>
+      <td>Maria Rosa</td>
+      <td>55782</td>
+      <td class="status-pendente">PENDENTE</td>
+      <td>2025-01-18</td>
+      <td>Aguardando retorno</td>
+    </tr>
+
+    <tr>
+      <td>Carlos Mendes</td>
+      <td>88412</td>
+      <td class="status-atrasado">ATRASADO</td>
+      <td>2025-01-10</td>
+      <td>Atraso na entrega</td>
+    </tr>
+
+  </table>
+</div>
+
+<!-- 🔎 Script de Pesquisa (Filtra NOME + PASSAPORTE + STATUS) -->
+<script>
+document.getElementById("searchBox").addEventListener("keyup", function() {
+
+    let filter = this.value.toLowerCase();
+    let rows = document.querySelectorAll("#dataTable tr");
+
+    for (let i = 1; i < rows.length; i++) {
+
+        let name = rows[i].cells[0].textContent.toLowerCase();
+        let passport = rows[i].cells[1].textContent.toLowerCase();
+        let status = rows[i].cells[2].textContent.toLowerCase();
+
+        if (
+            name.includes(filter) ||
+            passport.includes(filter) ||
+            status.includes(filter)
+        ) {
+            rows[i].style.display = "";
+        } else {
+            rows[i].style.display = "none";
+        }
+    }
+});
+</script>
+
+</body>
+</html>
